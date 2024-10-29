@@ -22,7 +22,7 @@ e) Kokeilin herra-orja arkkitehtuuria siten, että molemmat ovat samalla koneell
 Nyt vuorossa oli orja-avaimen hyväksyttäminen herralle. Syötin komentoriville komennon salt-key -A. Vastoin odotuksia se ei toiminut. Yritin korjata tilannetta käyttämällä muun muassa seuraavia komentoja: sudo systemctl restart salt-minion, sudo cat /var/log/salt/minion ja sudo systemctl status salt-minion. Mikään ei auttanut.
 
 
-
+![avain](https://github.com/user-attachments/assets/0b64f9fe-615c-401b-8e4c-b6b66fddf42d)
 
 
 # Lähdeluettelo
