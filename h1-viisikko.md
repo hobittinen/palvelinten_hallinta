@@ -11,3 +11,9 @@ Jäljellä oli enää viimeiset vaiheet. Toiseksi viimeinen vaihe oli komennon e
 Viimeinkin oli viimeisten komentojen vuoro. Viimeisillä komennoilla asensin salt-minionin. Käytin seuraavia komentoja: sudo apt-get update ja sudo apt-get -y install salt-minion. Tarkistin komentojen toimivuuden komennolla sudo salt-call --version.
 
 c) Kokeilin viittä tärkeintä Saltin tilafunktiota. Aloitin pkg:stä. Ensin minun piti syöttää komento 
+
+
+
+# Lähdeluettelo
+https://terokarvinen.com/palvelinten-hallinta/
+https://terokarvinen.com/2021/salt-run-command-locally/
