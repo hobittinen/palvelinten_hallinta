@@ -9,6 +9,14 @@ Päätin tässä välissä päivittää järjestelmäni. Käytin päivittämisee
 ![vagrant](https://github.com/user-attachments/assets/d2dab1dc-c6fc-43fa-b713-96a9e9aca31b)
 
 
-b) Aikaisemmassa tehtävässä koetun ilon ja riemun takia päätin jatkaa tehtävien tekoa vielä saman päivän aikana. Aloin tekemään tätä tehtävää 8.11. klo 18.20. Hain apua tehtävän tekemiseen Tero Karvisen verkkosivulta Two Machine Virtual Network With Debian 11 Bullseye and Vagrant (Karvinen 2021). Kun avut oli metsästetty, pääsi itse tehtävän teko vauhtiin! Ensitöikseni kirjauduin takaisin virtuaalikoneelleni. Kirjautumisen jälkeen siirryin terminaaliin. Ensimmäisenä syötin sinne komennon mkdir host-yks, jolla loin hakemiston host-yks. Tämän jälkeen siirryin kyseiseen hakemistoon komennolla cd host-yks. Tässä kohtaa en enää ymmärtänyt kunnolla Karvisen sivulta löytyviä ohjeita, joten päätin etsiä apua internetistä. Kello oli tässä vaiheessa noin 18.28. Noin kymmentä minuuttia myöhemmin löysin freecodecamp-sivustolta Ijeoma Etin kirjoittaman artikkelin How to Create and Manage Virtual Machines with the Vagrant Command Line Tool (Eti 2023). Kyseisestä artikkelista otin oppia Vagrantfileen liittyen, jotta pääsisin tehtävässä eteenpäin. Sovelsin artikkelista löytynyttä komentoa vagrant init, jotta sain luotua Vagrantfilen. Tarkastin onnistumiseni Vagrantfilen luonnissa käyttämällä komentoa ls Vagrantfile.
+b) Aikaisemmassa tehtävässä koetun ilon ja riemun takia päätin jatkaa tehtävien tekoa vielä saman päivän aikana. Aloin tekemään tätä tehtävää 8.11. klo 18.20. Hain apua tehtävän tekemiseen Tero Karvisen verkkosivulta Two Machine Virtual Network With Debian 11 Bullseye and Vagrant (Karvinen 2021). Kun avut oli metsästetty, pääsi itse tehtävän teko vauhtiin! Ensitöikseni kirjauduin takaisin virtuaalikoneelleni. Kirjautumisen jälkeen siirryin terminaaliin. Ensimmäisenä syötin sinne komennon mkdir host-yks, jolla loin hakemiston host-yks. Tämän jälkeen siirryin kyseiseen hakemistoon komennolla cd host-yks. Tässä kohtaa en enää ymmärtänyt kunnolla Karvisen sivulta löytyviä ohjeita, joten päätin etsiä apua internetistä. Kello oli tässä vaiheessa noin 18.28. Noin kymmentä minuuttia myöhemmin löysin freecodecamp-sivustolta Ijeoma Etin kirjoittaman artikkelin How to Create and Manage Virtual Machines with the Vagrant Command Line Tool (Eti 2023). Kyseisestä artikkelista otin oppia Vagrantfileen liittyen, jotta pääsisin tehtävässä eteenpäin. Sovelsin artikkelista löytynyttä komentoa vagrant init debian/bookworm64, jotta sain luotua Vagrantfilen. Tarkastin onnistumiseni Vagrantfilen luonnissa käyttämällä komentoa ls Vagrantfile.
 
-![vagrantfile](https://github.com/user-attachments/assets/811bdf11-e142-474a-8c72-a0b8fdcbd0ef)
+![vagrantfile](https://github.com/user-attachments/assets/442c288a-85f7-4033-bd17-761804e65ccc)
+
+
+Seuraavaksi kurkistin Vagrantfilen sisuksiin. Jotta pääsin kurkkausreissulleni, syötin terminaaliin komennon nano Vagrantfile. Allaolevasta kuvasta näkyy osa Vagrantfilen sisällöstä.
+
+![vagrantfilensisus](https://github.com/user-attachments/assets/23bbcb9b-6607-40df-aeb9-fc489b82bd5d)
+
+
+Viimeisenä, muttei vähäisimpänä oli vuorossa Vagrantfilen tallennus. Olisi harmi, jos se katoaisi bittiavaruuteen ja kova työni menisi sitä kautta hukkaan. Tallensin Vagrantfilen komennolla vagrant up.
