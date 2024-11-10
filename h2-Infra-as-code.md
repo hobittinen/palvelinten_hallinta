@@ -35,3 +35,7 @@ Nyt oli vuorossa itse pingaaminen. Tässä vaiheessa kello oli 17.50. Päätin p
 ![ping1](https://github.com/user-attachments/assets/4cb3690b-2d74-46d2-befc-3c17f2a25177)
 
 ![ping2](https://github.com/user-attachments/assets/fe51196f-bb94-43e7-bd30-1ed7887555de)
+
+
+
+d) Oli aika tulla takaisin tehtävien ääreen 10.11. klo 14.26. Kävin tarkastamassa kurssin tehtäväsivulta Palvelinten Hallinta - Configuration Management Systems course - 2024 autumn (Karvinen 2024) mitä tässä tehtävässä kuuluisi tehdä. Sivulta sain selville, että nyt oli vuorossa herra-orja-demonstrointia. Aloitin tehtävänteon kirjautumalla virtuaalikoneelleni. Päästyäni sisälle koneeseen, siirryin terminaaliin ja syötin komennon cd host-yks, jotta pääsisin host-yks-hakemistoon. Kyseisessä hakemistossa sijaitsee kaikki Vagrant-juttuni. Ensimmäinen asia, minkä tein host-yks-hakemistossa oli eilen luomieni virtuaalikoneiden käynnistys. Käytin käynnistykseen komentoa vagrant up. Koneiden käynnistyttyä siirryin node1-koneelle, jolle halusin asentaa salt-masterin. Siirtymiseen käytin komentoa vagrant ssh node1. Ennen masterin asennusta päivitin node1:n varmuuden vuoksi komennolla sudo apt-get update. Päivityksen jälkeen syötin komennon sudo apt-get install salt-master
