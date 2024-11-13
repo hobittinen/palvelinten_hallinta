@@ -71,9 +71,15 @@ Koska herraorja ei luonnistunut, en pystynyt tekemään loppuja tehtäviä.
 # Lähdeluettelo
 
 Eti, I. (2023). How to Create and Manage Virtual Machines with the Vagrant Command Line Tool. FreeCodeCamp. Saatavilla: https://www.freecodecamp.org/news/create-and-manage-virtual-machines-with-vagrant/
+
 HashiCorp (2024). Vagrant Installation Guide. Saatavilla: https://developer.hashicorp.com/vagrant/docs/installation
+
 Karvinen, T. (2021). Two Machine Virtual Network With Debian 11 Bullseye and Vagrant. Saatavilla: https://www.terokarvinen.com
+
 Karvinen, T. (2018). Salt Quickstart – Salt Stack Master and Slave on Ubuntu Linux. Saatavilla: https://www.terokarvinen.com
+
 Karvinen, T. (2014). Hello Salt Infra-as-Code. Saatavilla: https://www.terokarvinen.com
+
 Karvinen, T. (2023). Salt Vagrant - automatically provision one master and two slaves. Saatavilla: https://www.terokarvinen.com
+
 Salt Overview. YAML - The Configuration Language of SaltStack. Saatavilla: https://docs.saltstack.com/en/latest/topics/tutorials/yaml.html
