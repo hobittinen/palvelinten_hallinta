@@ -1,6 +1,30 @@
-# moikkuu
+# Infra as code
 
-x)
+x) Karvinen 2021: Two Machine Virtual Network With Debian 11 Bullseye and Vagrant:
+    - Tärkein komento on sudo apt-get update.
+    - Vagrantfilen tulee sisältää KAIKKI tarpeellinen tieto, muuten ei mistään tule mitään.
+    - Hostiin pääsee kirjautumaan komennolla vagrant ssh (host).
+   Karvinen 2018: Salt Quickstart – Salt Stack Master and Slave on Ubuntu Linux
+    - Master asennetaan komennolla sudo apt-get -y install salt-master.
+    - Slave asennetaan komennolla sudo apt-get -y install salt-minion.
+    - Slaven /etc/salt/minion-tiedostoon pitää laittaa masterin ip-osoite.
+    - Slaven lähettämä avain tulee hyväksyä masterilla.
+   Karvinen 2014: Hello Salt Infra-as-Code
+    - Tärkeä komento on sudoedit init.sls.
+    - Testauksessa voidaan käyttää seuraavaa komentoa: sudo salt-call --local state.apply hello.
+    - Idempotenttiutta testatessa voidaan käyttää komentoa sudo salt-call --local state.apply hello.
+   Karvinen 2023: Salt Vagrant - automatically provision one master and two slaves
+    - Kun syöttää seuraavan komentosarjan, tulee muistaa oikeat sisennykset, jotta homma toimii.
+    cat /srv/salt/hello/init.sls
+/tmp/infra-as-code:
+  file.managed
+     - Kun tiedosto on top.sls, se määrittää mitkä asiat suoritetaan millekin orjalle.
+   Salt overview:
+    - Usein oletusrenderöijä on YAML.
+    - YAML-tiedot järjestetään key: value-pareihin.
+    - YAML organisoidaan lohkoiksi.
+    - Sisennys määrittää kontekstin.
+    
 
 a) Tässä tehtävässä tarkoituksenani oli osoittaa Vagrantin asennus omalle virtuaalikoneelleni. Aloitin tehtävän teon 8.11. asentamalla Vagrantin. VirtualBoxin olin asentanut jo aikaisemmin, joten sitä minun ei nyt tarvinnut tehdä. Kun aloitin tehtävän tekoa, oli kello 15.40. Kirjauduin sisään virtuaalikoneelleni. Jotta sain Vagrant-asennukseni alkuun, suuntasin Vagrantin viralliselle asennusohjesivulle (Vagrant). Tosin heti kun aukaisin kyseisen verkkosivun, se ohjeisti minut avaamaan toisen verkkosivun. Tottelin ohjeistusta ja avasin Vagrantin virallisen asennussivun (Vagrant), josta valitsin Linuxille sopivan paketin ladattavaksi. Paketin latauksessa kului noin 20 sekuntia. Kun paketti oli onnistuneesti latautunut, palasin asennusohjesivulle. Luin sen nopeasti läpi, minkä jälkeen siirryin virtuaalikoneelleni.
 
@@ -38,4 +62,18 @@ Nyt oli vuorossa itse pingaaminen. Tässä vaiheessa kello oli 17.50. Päätin p
 
 
 
-d) Oli aika tulla takaisin tehtävien ääreen 10.11. klo 14.26. Kävin tarkastamassa kurssin tehtäväsivulta Palvelinten Hallinta - Configuration Management Systems course - 2024 autumn (Karvinen 2024) mitä tässä tehtävässä kuuluisi tehdä. Sivulta sain selville, että nyt oli vuorossa herra-orja-demonstrointia. Aloitin tehtävänteon kirjautumalla virtuaalikoneelleni. Päästyäni sisälle koneeseen, siirryin terminaaliin ja syötin komennon cd host-yks, jotta pääsisin host-yks-hakemistoon. Kyseisessä hakemistossa sijaitsee kaikki Vagrant-juttuni. Ensimmäinen asia, minkä tein host-yks-hakemistossa oli eilen luomieni virtuaalikoneiden käynnistys. Käytin käynnistykseen komentoa vagrant up. Koneiden käynnistyttyä siirryin node1-koneelle, jolle halusin asentaa salt-masterin. Siirtymiseen käytin komentoa vagrant ssh node1. Ennen masterin asennusta päivitin node1:n varmuuden vuoksi komennolla sudo apt-get update. Päivityksen jälkeen syötin komennon sudo apt-get install salt-master. Eipä komento toiminut. Yritin ratkoa tilannetta toistamalla komentoja sudo mkdir -p /etc/apt/keyrings ja sudo curl -fsSL -o /etc/apt/keyrings/salt-archive-keyring-2023.gpg https://repo.saltproject.io/salt/py3/debian/12/amd64/SALT-PROJECT-GPG-PUBKEY-2023.gpg. Käytin myös komentoa echo "deb [signed-by=/etc/apt/keyrings/salt-archive-keyring-2023.gpg arch=amd64] https://repo.saltproject.io/salt/py3/debian/12/amd64/latest bookworm main" | sudo tee /etc/apt/sources.list.d/salt.list. Mikään ei auttanut, joten eipä tässä mitään.
+d) Oli aika tulla takaisin tehtävien ääreen 10.11. klo 14.26. Kävin tarkastamassa kurssin tehtäväsivulta Palvelinten Hallinta - Configuration Management Systems course - 2024 autumn (Karvinen 2024) mitä tässä tehtävässä kuuluisi tehdä. Sivulta sain selville, että nyt oli vuorossa herra-orja-demonstrointia. Aloitin tehtävänteon kirjautumalla virtuaalikoneelleni. Päästyäni sisälle koneeseen, siirryin terminaaliin ja syötin komennon cd host-yks, jotta pääsisin host-yks-hakemistoon. Kyseisessä hakemistossa sijaitsee kaikki Vagrant-juttuni. Ensimmäinen asia, minkä tein host-yks-hakemistossa oli eilen luomieni virtuaalikoneiden käynnistys. Käytin käynnistykseen komentoa vagrant up. Koneiden käynnistyttyä siirryin node1-koneelle, jolle halusin asentaa salt-masterin. Siirtymiseen käytin komentoa vagrant ssh node1. Ennen masterin asennusta päivitin node1:n varmuuden vuoksi komennolla sudo apt-get update. Päivityksen jälkeen syötin komennon sudo apt-get install salt-master. Eipä komento toiminut. Yritin ratkoa tilannetta toistamalla komentoja sudo mkdir -p /etc/apt/keyrings ja sudo curl -fsSL -o /etc/apt/keyrings/salt-archive-keyring-2023.gpg https://repo.saltproject.io/salt/py3/debian/12/amd64/SALT-PROJECT-GPG-PUBKEY-2023.gpg. Käytin myös komentoa echo "deb [signed-by=/etc/apt/keyrings/salt-archive-keyring-2023.gpg arch=amd64] https://repo.saltproject.io/salt/py3/debian/12/amd64/latest bookworm main" | sudo tee /etc/apt/sources.list.d/salt.list. Mikään ei auttanut, joten eipä tässä mitään. Yritin toistaa seuraavien kolmen päivän aikana kaikki mahdolliset kikat (= toistin äskeisiä koodeja), mutta eipä mistään tullut mitään.
+
+![epäonnistuminen1](https://github.com/user-attachments/assets/d3085b22-cf4e-4c3f-9215-55de7320225c)
+
+Koska herraorja ei luonnistunut, en pystynyt tekemään loppuja tehtäviä.
+
+# Lähdeluettelo
+
+Eti, I. (2023). How to Create and Manage Virtual Machines with the Vagrant Command Line Tool. FreeCodeCamp. Saatavilla: https://www.freecodecamp.org/news/create-and-manage-virtual-machines-with-vagrant/
+HashiCorp (2024). Vagrant Installation Guide. Saatavilla: https://developer.hashicorp.com/vagrant/docs/installation
+Karvinen, T. (2021). Two Machine Virtual Network With Debian 11 Bullseye and Vagrant. Saatavilla: https://www.terokarvinen.com
+Karvinen, T. (2018). Salt Quickstart – Salt Stack Master and Slave on Ubuntu Linux. Saatavilla: https://www.terokarvinen.com
+Karvinen, T. (2014). Hello Salt Infra-as-Code. Saatavilla: https://www.terokarvinen.com
+Karvinen, T. (2023). Salt Vagrant - automatically provision one master and two slaves. Saatavilla: https://www.terokarvinen.com
+Salt Overview. YAML - The Configuration Language of SaltStack. Saatavilla: https://docs.saltstack.com/en/latest/topics/tutorials/yaml.html
