@@ -76,18 +76,40 @@ Oli aika luoda itse virtuaalikone uudelleen. Sen luomisen jälkeen loin yhteyden
 ![image](https://github.com/user-attachments/assets/a4bd548f-c439-46a1-a619-b9fa67ee7a30)
 ![image](https://github.com/user-attachments/assets/079642b6-fa99-4049-ad9f-c0730566fcba)
 
-Tässä kohtaa kello oli mennyt seitsemän minuuttia eteenpäin eli se oli 13.07. Tässä kohtaa muokkasin Vagrantfileä. Muokkauksen jälkeen käytin komentoa vagrant up, jolla sain luotua master- ja minion-koneet.
+Tässä kohtaa kello oli mennyt seitsemän minuuttia eteenpäin eli se oli 13.07. Tässä kohtaa muokkasin Vagrantfileä. Muokkauksen jälkeen käytin komentoa vagrant up, jolla sain luotua master- ja minion-koneet. Varmuuden vuoksi kokeilin pingaamista koneiden välillä. Onnekseni onnistuin pingauksessa. Kello oli tässä vaiheessa 13.47. Päätin pitää tauon.
 
 ![image](https://github.com/user-attachments/assets/4fc3187c-2900-4334-a0dc-04cd73168c7b)
 ![image](https://github.com/user-attachments/assets/55e4ab7b-fb0f-4b12-ac7b-06dd48866d78)
+![image](https://github.com/user-attachments/assets/d21ef545-f87d-4a2b-808c-ed9ac5e54464)
+
+
+Palasin tauoltani klo 17.00. Tällä istunnolla hoitaisin tämän tehtävän oikean tehtävän eli herraorjan kuntoon.
+
+Aloitin tutkimalla vaihtoehtoista tapaa tehdä herraorja. Etsintöjen aikana päädyin Saltin asennusohjeisiin ja kas kummaa, sieltä löytyi hyvältä vaikuttava ohjeistus! Tämän ohjeen etsimiseen minulta oli mennyt 10 minuuttia.
+
+Siirryin virtuaalikoneideni pariin klo 17.12. Ensin kirjauduin master-virtuaalikoneelleni. Kirjautumisen jälkeen asensin Saltin seuraavilla komennoilla:
+# Ensure keyrings dir exists
+mkdir -p /etc/apt/keyrings
+# Download public key
+curl -fsSL https://packages.broadcom.com/artifactory/api/security/keypair/SaltProjectKey/public | sudo tee /etc/apt/keyrings/salt-archive-keyring.pgp
+# Create apt repo target configuration
+curl -fsSL https://github.com/saltstack/salt-install-guide/releases/latest/download/salt.sources | sudo tee /etc/apt/sources.list.d/salt.sources
+
+Kun ylläolevat komennot olivat saaneet hommansa hoidettua, asensin Salt-masterin.
+
+![image](https://github.com/user-attachments/assets/e52b41de-601e-4ba3-9285-7d8a94ec63a4)
+
+Salt-masterin asennuksen jälkeen vuorossa oli Salt-minionin asennus. Kirjauduin ulos master-koneelta ja kirjauduin sisälle slave-koneelle. Suoritin samat komennot kuin master-koneelle, paitsi asensin tietysti Salt-masterin sijaan Salt-minionin.
+
+![image](https://github.com/user-attachments/assets/4b7942c6-6b2e-4d87-85a6-7367742d10ce)
 
 
 
 
-
-Koska herraorja ei luonnistunut, en pystynyt tekemään loppuja tehtäviä.
 
 # Lähdeluettelo
+
+https://docs.saltproject.io/salt/install-guide/en/latest/topics/install-by-operating-system/linux-deb.html
 
 Eti, I. (2023). How to Create and Manage Virtual Machines with the Vagrant Command Line Tool. FreeCodeCamp. Saatavilla: https://www.freecodecamp.org/news/create-and-manage-virtual-machines-with-vagrant/
 
