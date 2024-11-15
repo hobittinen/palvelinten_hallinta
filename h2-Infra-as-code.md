@@ -62,9 +62,28 @@ Nyt oli vuorossa itse pingaaminen. Tässä vaiheessa kello oli 17.50. Päätin p
 
 
 
-d) Oli aika tulla takaisin tehtävien ääreen 10.11. klo 14.26. Kävin tarkastamassa kurssin tehtäväsivulta Palvelinten Hallinta - Configuration Management Systems course - 2024 autumn (Karvinen 2024) mitä tässä tehtävässä kuuluisi tehdä. Sivulta sain selville, että nyt oli vuorossa herra-orja-demonstrointia. Aloitin tehtävänteon kirjautumalla virtuaalikoneelleni. Päästyäni sisälle koneeseen, siirryin terminaaliin ja syötin komennon cd host-yks, jotta pääsisin host-yks-hakemistoon. Kyseisessä hakemistossa sijaitsee kaikki Vagrant-juttuni. Ensimmäinen asia, minkä tein host-yks-hakemistossa oli eilen luomieni virtuaalikoneiden käynnistys. Käytin käynnistykseen komentoa vagrant up. Koneiden käynnistyttyä siirryin node1-koneelle, jolle halusin asentaa salt-masterin. Siirtymiseen käytin komentoa vagrant ssh node1. Ennen masterin asennusta päivitin node1:n varmuuden vuoksi komennolla sudo apt-get update. Päivityksen jälkeen syötin komennon sudo apt-get install salt-master. Eipä komento toiminut. Yritin ratkoa tilannetta toistamalla komentoja sudo mkdir -p /etc/apt/keyrings ja sudo curl -fsSL -o /etc/apt/keyrings/salt-archive-keyring-2023.gpg https://repo.saltproject.io/salt/py3/debian/12/amd64/SALT-PROJECT-GPG-PUBKEY-2023.gpg. Käytin myös komentoa echo "deb [signed-by=/etc/apt/keyrings/salt-archive-keyring-2023.gpg arch=amd64] https://repo.saltproject.io/salt/py3/debian/12/amd64/latest bookworm main" | sudo tee /etc/apt/sources.list.d/salt.list. Mikään ei auttanut, joten eipä tässä mitään. Yritin toistaa seuraavien kolmen päivän aikana kaikki mahdolliset kikat (= toistin äskeisiä koodeja), mutta eipä mistään tullut mitään.
+d) Oli aika tulla takaisin tehtävien ääreen 10.11. klo 14.26. Kävin tarkastamassa kurssin tehtäväsivulta Palvelinten Hallinta - Configuration Management Systems course - 2024 autumn (Karvinen 2024) mitä tässä tehtävässä kuuluisi tehdä. Sivulta sain selville, että nyt oli vuorossa herra-orja-demonstrointia. Aloitin tehtävänteon kirjautumalla virtuaalikoneelleni. Päästyäni sisälle koneeseen, siirryin terminaaliin ja syötin komennon cd host-yks, jotta pääsisin host-yks-hakemistoon. Kyseisessä hakemistossa sijaitsee kaikki Vagrant-juttuni. Ensimmäinen asia, minkä tein host-yks-hakemistossa oli eilen luomieni virtuaalikoneiden käynnistys. Käytin käynnistykseen komentoa vagrant up.
+Koneiden käynnistyttyä siirryin node1-koneelle, jolle halusin asentaa salt-masterin. Siirtymiseen käytin komentoa vagrant ssh node1. Ennen masterin asennusta päivitin node1:n varmuuden vuoksi komennolla sudo apt-get update. Päivityksen jälkeen syötin komennon sudo apt-get install salt-master. Eipä komento toiminut. Yritin ratkoa tilannetta toistamalla komentoja sudo mkdir -p /etc/apt/keyrings ja sudo curl -fsSL -o /etc/apt/keyrings/salt-archive-keyring-2023.gpg https://repo.saltproject.io/salt/py3/debian/12/amd64/SALT-PROJECT-GPG-PUBKEY-2023.gpg. Käytin myös komentoa echo "deb [signed-by=/etc/apt/keyrings/salt-archive-keyring-2023.gpg arch=amd64] https://repo.saltproject.io/salt/py3/debian/12/amd64/latest bookworm main" | sudo tee /etc/apt/sources.list.d/salt.list. Mikään ei auttanut, joten eipä tässä mitään. Yritin toistaa seuraavien kolmen päivän aikana kaikki mahdolliset kikat (= toistin äskeisiä koodeja), mutta eipä mistään tullut mitään.
 
 ![epäonnistuminen1](https://github.com/user-attachments/assets/d3085b22-cf4e-4c3f-9215-55de7320225c)
+
+Palasin tehtävän pariin 15.11. klo 13. Heti alkuun päätin poistaa Vagrantfilen komennolla rm Vagrantfile. Tämän jälkeen loin tiedoston uudelleen:
+
+![image](https://github.com/user-attachments/assets/271fbecd-472d-4000-a039-94b12e843214)
+
+Oli aika luoda itse virtuaalikone uudelleen. Sen luomisen jälkeen loin yhteyden siihen. Tosin heti yhteyden muodostamisen jälkeen poistuin virtuaalikoneesta ja tuhosin sen.
+
+![image](https://github.com/user-attachments/assets/a4bd548f-c439-46a1-a619-b9fa67ee7a30)
+![image](https://github.com/user-attachments/assets/079642b6-fa99-4049-ad9f-c0730566fcba)
+
+Tässä kohtaa kello oli mennyt seitsemän minuuttia eteenpäin eli se oli 13.07. Tässä kohtaa muokkasin Vagrantfileä. Muokkauksen jälkeen käytin komentoa vagrant up, jolla sain luotua master- ja minion-koneet.
+
+![image](https://github.com/user-attachments/assets/4fc3187c-2900-4334-a0dc-04cd73168c7b)
+![image](https://github.com/user-attachments/assets/55e4ab7b-fb0f-4b12-ac7b-06dd48866d78)
+
+
+
+
 
 Koska herraorja ei luonnistunut, en pystynyt tekemään loppuja tehtäviä.
 
