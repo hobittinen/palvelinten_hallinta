@@ -103,6 +103,17 @@ Salt-masterin asennuksen jälkeen vuorossa oli Salt-minionin asennus. Kirjauduin
 
 ![image](https://github.com/user-attachments/assets/4b7942c6-6b2e-4d87-85a6-7367742d10ce)
 
+Kävin vielä muokkaamassa slaven /etc/salt/minion-tiedostoa, jotta siellä oli master-kohdassa master-virtuaalikoneeni ip-osoite. Tämän jälkeen käynnistin Salt-minionin uudelleen.
+
+![image](https://github.com/user-attachments/assets/9b0cfb2d-75ab-4282-9f01-4a979540e0f4)
+![image](https://github.com/user-attachments/assets/1b010b99-9468-4f01-88d4-a74fbdc3f241)
+
+Viimeisenä, muttei vähäisimpänä palasin takaisin master-koneeelle. Sieltä tarkastin hyväksyntää odottavat avaimet. Siellä oli hyväksyntää vailla vain slaven avain, jonka tietenkin hyväksyin. Hyväksynnän jälkeen vielä kokeilin minionin toimintaa ja luojan kiitos se toimi! Melkein viikon mittainen operaationi oli ohi!!!
+
+![image](https://github.com/user-attachments/assets/c9b30d77-130e-45a2-8461-f82d55080e5a)
+
+e)
+
 
 
 
