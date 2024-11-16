@@ -118,12 +118,26 @@ e) Aloitin tekemään tätä tehtävää 16.11. klo 13.43. Ensin kirjauduin taka
 
 
 Kuten saatoit huomata, init.sls-tiedoston luonnin aikana onnistuin luomaan myös komennon, joka luo hellurei-tiedoston. Päätin testata komentoa, jotta hellurei oli varmasti luotu. Vainoharhaisuuteen taipuvaisena päätin kuitenkin vielä tarkastaa tiedoston olemassaolon alla olevan kuvan mukaisesti:
+
 ![image](https://github.com/user-attachments/assets/0bd4ba08-760c-48a3-b59d-2e9bfcba27e0)
 
 Onnekseni kaikki oli mennyt putkeen. Pääsin lopettamaan tämän tehtävän 14.07.
 
 
-f) 
+f) Pidin noin tunnin mittaisen tauon edellisen tehtävän jälkeen. Palasin master-koneelle klo 15.12. Nyt oli vuorossa tiedoston ajoa orjalla. Aloitin homman varmistamalla herran ja orjan yhteyden:
+
+![image](https://github.com/user-attachments/assets/d7d137c2-6365-4a32-a1d7-baf6f754a72d)
+
+Jatkoin tehtäväntekoa kuvassa näkyvällä tavalla:
+
+![image](https://github.com/user-attachments/assets/10c08f7e-d062-4536-a208-ddc693359a34)
+
+Viimeistelin tehtävän siirtymällä master-koneelta slave-koneelle. Slaveen päästyäni tutkailin /tmp/-hakemistoa, jotta saisin varmuuden tehtävän onnistumisesta.
+
+![image](https://github.com/user-attachments/assets/b60c5e52-a22b-4915-82ad-97fc020b6e92)
+
+Tehtävä valmistui 15.27.
+
 
 
 
