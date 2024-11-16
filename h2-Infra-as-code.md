@@ -112,7 +112,7 @@ Viimeisenä, muttei vähäisimpänä palasin takaisin master-koneeelle. Sieltä 
 
 ![image](https://github.com/user-attachments/assets/c9b30d77-130e-45a2-8461-f82d55080e5a)
 
-e)
+e) Aloitin tekemään tätä tehtävää 16.11. klo 13.43. Ensin kirjauduin takaisin master-koneelle, jonne loin uuden hakemiston /srv/salt/moikku.
 
 
 
