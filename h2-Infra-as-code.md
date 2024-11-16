@@ -1,25 +1,30 @@
 # Infra as code
 
 x) Karvinen 2021: Two Machine Virtual Network With Debian 11 Bullseye and Vagrant:
+
     - Tärkein komento on sudo apt-get update.
     - Vagrantfilen tulee sisältää KAIKKI tarpeellinen tieto, muuten ei mistään tule mitään.
     - Hostiin pääsee kirjautumaan komennolla vagrant ssh (host).
    Karvinen 2018: Salt Quickstart – Salt Stack Master and Slave on Ubuntu Linux
+   
     - Master asennetaan komennolla sudo apt-get -y install salt-master.
     - Slave asennetaan komennolla sudo apt-get -y install salt-minion.
     - Slaven /etc/salt/minion-tiedostoon pitää laittaa masterin ip-osoite.
     - Slaven lähettämä avain tulee hyväksyä masterilla.
    Karvinen 2014: Hello Salt Infra-as-Code
+   
     - Tärkeä komento on sudoedit init.sls.
     - Testauksessa voidaan käyttää seuraavaa komentoa: sudo salt-call --local state.apply hello.
     - Idempotenttiutta testatessa voidaan käyttää komentoa sudo salt-call --local state.apply hello.
    Karvinen 2023: Salt Vagrant - automatically provision one master and two slaves
+   
     - Kun syöttää seuraavan komentosarjan, tulee muistaa oikeat sisennykset, jotta homma toimii.
     cat /srv/salt/hello/init.sls
-/tmp/infra-as-code:
-  file.managed
+     /tmp/infra-as-code:
+     file.managed
      - Kun tiedosto on top.sls, se määrittää mitkä asiat suoritetaan millekin orjalle.
    Salt overview:
+   
     - Usein oletusrenderöijä on YAML.
     - YAML-tiedot järjestetään key: value-pareihin.
     - YAML organisoidaan lohkoiksi.
@@ -54,7 +59,11 @@ Kun Vagrantfile oli saatu kuntoon, oli aika käynnistää äsken luomani koneet.
 
 ![osoitteet](https://github.com/user-attachments/assets/73b582ac-39fc-4608-9be8-f00f21064baa)
 
-Nyt oli vuorossa itse pingaaminen. Tässä vaiheessa kello oli 17.50. Päätin pingata itselleni loogisessa järjestyksessä eli pingasin ensin node2. Aloitin urakan kirjautumalla node1-koneeseen komennolla vagrant ssh node1. Kun sain kirjauduttua sisään, syötin komennon ping -c 1 192.168.56.5. Tämän jälkeen poistuin node1-koneelta ja siirryin node2-koneelle komennolla vagrant ssh node2. Pingasin node1:n komennolla ping -c 1 192.168.56.4. Pingauksen jälkeen poistuin node2-koneelta. Kello oli nyt 18.05.
+Nyt oli vuorossa itse pingaaminen. Tässä vaiheessa kello oli 17.50. Päätin pingata itselleni loogisessa järjestyksessä eli pingasin ensin node2. Aloitin urakan kirjautumalla node1-koneeseen komennolla vagrant ssh node1. - Kun sain kirjauduttua sisään, syötin komennon
+
+     - ping -c 1 192.168.56.5.
+
+Tämän jälkeen poistuin node1-koneelta ja siirryin node2-koneelle komennolla vagrant ssh node2. Pingasin node1:n komennolla ping -c 1 192.168.56.4. Pingauksen jälkeen poistuin node2-koneelta. Kello oli nyt 18.05.
 
 ![ping1](https://github.com/user-attachments/assets/4cb3690b-2d74-46d2-befc-3c17f2a25177)
 
@@ -139,8 +148,49 @@ Viimeistelin tehtävän siirtymällä master-koneelta slave-koneelle. Slaveen p�
 Tehtävä valmistui 15.27.
 
 
+g) Laiska olento kun olen, oli pakko taas pitää tauko. Palasin tehtävien tekoon klo 17.00. Kävin tarkastamassa tehtäväsivulta, mitä tässä tehtävässä pitäisi tehdä ja sain selville, että nyt vuorossa olisi sls-tiedoston tekoa.
+
+Aloitin etsimällä ohjeita tehtäväntekoon. Löysin sopivasti opettajan tekemät ohjeet allaolevasta osoitteesta:
+
+     - https://terokarvinen.com/2018/apache-user-homepages-automatically-salt-package-file-service-example/?fromSearch=apache
+
+Ohjeiden löytymisen jälkeen aloitin tehtävän kirjautumalla takaisin master-koneelle. Loin sinne moduulin /srv/salt/apache, jonne loin samantien init.sls-tiedoston. Samaan aikaan loin myös default-index.html-tiedoston.
+
+![image](https://github.com/user-attachments/assets/98169c7a-2700-48a2-8baa-f49896c0cb7c)
+
+![image](https://github.com/user-attachments/assets/6464e0d6-316d-4755-a96d-443cc619a4d7)
+
+Seuraavaksi syötin ajoin moduulin ensimmäistä kertaa. Samalla asensin Apachen master-koneelle. Unohdin ottaa kuvan tästä vaiheesta. Muistin kuitenkin ottaa kuvan toisesta ajosta:
+
+![image](https://github.com/user-attachments/assets/6f907d9e-a07d-4093-a72d-44ba6f2a2577)
+
+Päätin tarkistaa moduulin idempotenttiuden. Siirryin master-koneelta slave-koneelle. Käytin kuvassa näkyviä komentoja todetakseni, että kaikki oli kunnossa ja tehtävä saatiin päätökseen klo 17.40.
+
+![image](https://github.com/user-attachments/assets/288ef7d2-63a8-4144-8ca8-b6209cbdcce2)
 
 
+h) Jäljellä oli viimeinen pakollinen tehtävä. Aloitin sen teon klo 17.47 uloskirjautumalla slave-koneesta ja sisäänkirjautumalla master-koneeseen. Siirryin komennolla cd /srv/salt kyseiseen hakemistoon. Loin hakemistoon top.sls-tiedoston, jonka sisällön näkee allaolevasta kuvasta.
+
+![image](https://github.com/user-attachments/assets/eccc06c5-5825-4d35-ae79-9eabd4ef0a7b)
+
+Käsitykseni mukaan olin onnistunut tekemään sellaisen top.sls-tiedoston, jolla pystyisi ajamaan sekä hello- että apache-moduulit. Jotta saisin täyden varmuuden työni jäljestä, käytin seuraavaa komentoa:
+            
+     $ sudo salt '*' state.apply
+
+![image](https://github.com/user-attachments/assets/158bca16-57ce-474b-a367-d6fd86afaa29)
+
+Ei onnistunut tällä kertaa. Päätin myöntyä ja tehdä erikseen hello.sls- ja apache.sls-tiedostot.
+
+![image](https://github.com/user-attachments/assets/a8aa5d12-2595-4d44-963c-9cd0f866cb7e)
+
+Kun kaikki sls-tiedostot oli saatu luotua, kokeilin viimeistellä tehtävän orjalla:
+                
+                $ sudo salt '*' state.apply
+
+Viimeistely onnistui! Tehtävä valmistui klo 18.12. Alla on todistusaineisto.
+
+![image](https://github.com/user-attachments/assets/b39ecd21-5025-45c8-bf35-6e4e3990bafa)
+![image](https://github.com/user-attachments/assets/83b2d5f4-3068-4ea4-9348-e957f680496d)
 
 
 
