@@ -88,11 +88,9 @@ Palasin tauoltani klo 17.00. Tällä istunnolla hoitaisin tämän tehtävän oik
 Aloitin tutkimalla vaihtoehtoista tapaa tehdä herraorja. Etsintöjen aikana päädyin Saltin asennusohjeisiin ja kas kummaa, sieltä löytyi hyvältä vaikuttava ohjeistus! Tämän ohjeen etsimiseen minulta oli mennyt 10 minuuttia.
 
 Siirryin virtuaalikoneideni pariin klo 17.12. Ensin kirjauduin master-virtuaalikoneelleni. Kirjautumisen jälkeen asensin Saltin seuraavilla komennoilla:
-# Ensure keyrings dir exists
+
 mkdir -p /etc/apt/keyrings
-# Download public key
 curl -fsSL https://packages.broadcom.com/artifactory/api/security/keypair/SaltProjectKey/public | sudo tee /etc/apt/keyrings/salt-archive-keyring.pgp
-# Create apt repo target configuration
 curl -fsSL https://github.com/saltstack/salt-install-guide/releases/latest/download/salt.sources | sudo tee /etc/apt/sources.list.d/salt.sources
 
 Kun ylläolevat komennot olivat saaneet hommansa hoidettua, asensin Salt-masterin.
@@ -112,7 +110,21 @@ Viimeisenä, muttei vähäisimpänä palasin takaisin master-koneeelle. Sieltä 
 
 ![image](https://github.com/user-attachments/assets/c9b30d77-130e-45a2-8461-f82d55080e5a)
 
-e) Aloitin tekemään tätä tehtävää 16.11. klo 13.43. Ensin kirjauduin takaisin master-koneelle, jonne loin uuden hakemiston /srv/salt/moikku.
+e) Aloitin tekemään tätä tehtävää 16.11. klo 13.43. Ensin kirjauduin takaisin master-koneelle, jonne loin uuden hakemiston /srv/salt/moikku. Tämän jälkeen loin init.sls-tiedoston.
+
+![image](https://github.com/user-attachments/assets/6ad783da-b224-438f-be7c-f7e064f57ed1)
+![image](https://github.com/user-attachments/assets/949aefe3-db74-4b5f-a24e-2199a1272d0c)
+![image](https://github.com/user-attachments/assets/62901d76-9eee-4fab-9d7c-fec875a69bfc)
+
+
+Kuten saatoit huomata, init.sls-tiedoston luonnin aikana onnistuin luomaan myös komennon, joka luo hellurei-tiedoston. Päätin testata komentoa, jotta hellurei oli varmasti luotu. Vainoharhaisuuteen taipuvaisena päätin kuitenkin vielä tarkastaa tiedoston olemassaolon alla olevan kuvan mukaisesti:
+![image](https://github.com/user-attachments/assets/0bd4ba08-760c-48a3-b59d-2e9bfcba27e0)
+
+Onnekseni kaikki oli mennyt putkeen. Pääsin lopettamaan tämän tehtävän 14.07.
+
+
+f) 
+
 
 
 
