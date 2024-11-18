@@ -44,7 +44,41 @@ a) Ensimmäisessä tehtävässä oli ideana asentaa Apache, korvata sen testisiv
 
 
 
-  b) 
+  b) Palasin takaisin tehtävien ääreen 18.11. klo 15.30. Tässä tehtävässä minun piti lisätä uusi portti, jota SSHd kuuntelee. Aloitin tehtävän tekemisen tuttuun tapaan avaamalla master-koneen. Siirryin hakemistoon /srv/salt ja syötin sinne kuvassa näkyvän komennot:
+
+![image](https://github.com/user-attachments/assets/144161b3-2642-4342-940f-079b5b3243b3)
+
+Olin tehnyt muokkauksia tiedostoon /etc/ssh/sshd_config. Lisäsin sinne portin 22 kaveriksi portin 1827. Tarkistin muokkausten olemassaolon cat-komennolla. Muokkauksien jälkeen uudelleenkäynnistin ssh-palvelun ja tarkistin SSHd:n kuuntelevan molemmilla asettamillani porteilla. Käytin siihen seuraavia komentoja:
+
+    sudo systemctl restart sshd
+    sudo ss -tuln | grep ssh
+
+Tässä kohtaa tajusin, että ehkä minun pitäisi käydä päivittämässä portit myös Vagrantfileen. Ryhdyin tuumasta toiseen ja poistuin master-koneelta. Avasin host-yks-hakemistossa Vagrantfilen ja lisäsin sinne kuvanmukaisesti:
+
+![image](https://github.com/user-attachments/assets/b09991b3-f079-4188-be57-bcfd031ff76a)
+
+Kun Vagrantfile oli saatu ajantasalle, palasin takaisin master-koneelle ja siellä olevaan /srv/salt-hakemistoon. Päästyäni takaisin tuttuun ja turvalliseen ympäristöön, aloin pohdiskelemaan service-watchia. En löytänyt googlettelulla vastauksia, joten päätin kysyä ChatGPT:lta. Se antoi seuraavan vastauksen:
+
+![image](https://github.com/user-attachments/assets/f7cee1b4-2c16-4a57-bb1b-4a8324d145f3)
+
+ChatGPT:n antaman vastauksen perusteella päätin lähestyä tehtävää inotify-toolsin avulla. Syötin siis seuraavat komennot:
+
+     sudo apt update
+     sudo apt install inotify-tools
+
+Tämän jälkeen minun piti jollain ilveellä luoda tiedosto/palvelu, joka seuraisi sshd_config-tiedostoa. Käännyin jälleen vanhan ystäväni ChatGPT:n puoleen. Se neuvoi tekemään seuraavan tiedoston:
+
+![image](https://github.com/user-attachments/assets/e8dd1109-326a-49e0-917d-a9e6507174a7)
+
+Tästä eteenpäin selviydyin itsenäisesti. Tehtävän viimeistelyä varten syötin seuraavat komennot:
+
+      sudo systemctl daemon-reload
+      sudo systemctl enable sshd-watch.service
+      sudo systemctl start sshd-watch.service
+
+Tehtävä tuli valmiiksi klo 16.06.
+
+
 
 
 
