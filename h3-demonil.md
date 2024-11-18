@@ -44,6 +44,8 @@ a) Ensimmäisessä tehtävässä oli ideana asentaa Apache, korvata sen testisiv
 
 
 
+
+
   b) Palasin takaisin tehtävien ääreen 18.11. klo 15.30. Tässä tehtävässä minun piti lisätä uusi portti, jota SSHd kuuntelee. Aloitin tehtävän tekemisen tuttuun tapaan avaamalla master-koneen. Siirryin hakemistoon /srv/salt ja syötin sinne kuvassa näkyvän komennot:
 
 ![image](https://github.com/user-attachments/assets/144161b3-2642-4342-940f-079b5b3243b3)
@@ -82,6 +84,39 @@ Tehtävä tuli valmiiksi klo 16.06.
 
 
 
+d) Pienen tauon jälkeen oli taas aika jatkaa tehtäviä! Olin jättänyt edellisen tehtävän jäljiltä master-koneen päälle, joten tällä kertaa ei tarvinnut tuhlata aikaa sisäänkirjautumiseen. Tosin tässä tehtävässä tällä ajansäästöllä ei ollut väliä, kun jouduin heti alkuun metsästämään ohjeita.
 
+Löysin kaksi mielestäni hyvää ohjetta. Ensimmäiseksi tutkailin [DigitalOceanin](https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-debian-11) ohjetta ja poimin sieltä käyttööni sopivia komentoja. Kun äskeinen lähde oli koluttu läpi, siirryin [Reintechin](https://reintech.io/blog/configuring-apache-virtual-hosts-debian-12) sivustolle keräämään tietoja.
 
+Metsästysretkeni jälkeen palasin takaisin master-koneelle. Sinne päästyäni aloitin ohjeiden soveltamisen syöttämällä seuraavat komennot:
 
+    sudo a2enmod userdir
+    sudo systemctl restart apache2
+
+Seuraavaksi loin uuden hakemiston ja sinne index.html-tiedoston.
+
+![image](https://github.com/user-attachments/assets/082e6c57-194a-4555-a076-8f0cd9ec2b36)
+
+Tähän asti olen muokannut tiedostoja sudo-oikeuksilla. Tässä tehtävässä pitäisi kuitenkin mahdollistaa tiedoston muokkaus ilman sudoa. Mahdollistin muokkauksen ilman sudoa seuraavilla komennoilla:
+
+    sudo chown -R vagrant:vagrant /home/master/public_html
+    sudo chmod 755 /home/master/public_html
+
+Seuraavaksi vuorossa oli VirtualHostin luominen. Aloitin sen luomalla alla olevassa kuvassa näkyvän tiedoston.
+
+![image](https://github.com/user-attachments/assets/7ef09496-089a-41be-84df-13098e6627d2)
+
+Seuraavaksi syötin seuraavat komennot, jotta sain tiedoston käyttöön.
+
+    sudo a2ensite pihlan_domain.conf
+    sudo a2dissite 000-default.conf
+    sudo apache2ctl configtest
+    sudo systemctl restart apache2
+
+Kun komennot olivat saaneet tehdä työtänsä, yritin avata sivun http://pihlan_domain, koska kaiken järjen mukaan sen pitäisi nyt toimia. Se ei kuitenkaan toiminut?! Yritin ratkoa ongelmaa palomuurin kautta.
+
+![image](https://github.com/user-attachments/assets/6f6583e3-19dd-40c7-b0e3-f0e2e8dce56b)
+
+![image](https://github.com/user-attachments/assets/84e5c820-3d4e-4df0-b501-25a48003ccc0)
+
+![image](https://github.com/user-attachments/assets/d8e26d29-442c-441c-baa8-1d7392bc6091)
