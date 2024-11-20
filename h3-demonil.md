@@ -2,12 +2,35 @@
 
 ## Tiivistelmät
 
+### Pkg-File-Service – Control Daemons with Salt – Change SSH Server Port
+- Artikkeli esittelee pkg-file-service-mallin. Kyseisellä mallilla pystytään hallitsemaan palvelimia Salt-konfiguraationhallintatyökalulla.
+- Mallin mukaan ohjelmisto asennetaan, konfigurointitiedosto päivitetään ja palvelu käynnistetään uudelleen, jotta uusi konfiguraatio otetaan käyttöön.
+  (Karvinen, T. 2018. https://terokarvinen.com/2018/04/03/pkg-file-service-control-daemons-with-salt-change-ssh-server-port/?fromSearch=karvinen%20salt%20ssh)
+
+### Saltin tilafunktiot: pkg, file ja service
+1. Pkg
+   - Tarkoituksena joko asentaa, poistaa tai päivittää paketteja.
+   - Komento 'pkg.installed' varmistaa paketin asennuksen.
+   - Vastaavasti 'pkg.purged' poistaa paketin.
+2. File
+   - Tarkoituksena hallita eri palveluiden tilaa.
+   - 'file.managed' mahdollistaa tiedoston oikeanlaisen ja halutun sisällön.
+   - 'file.absent' varmistaa tietyn tiedoston olevan poistettu.
+   - 'file.symlink' luo symbolisen linkin.
+3. Service
+   - Tarkoituksena palveluiden tilan hallitseminen
+   - 'service.running' huolehtii palvelun käynnissäolosta.
+   - Jos halutaan varmistaa palvelun käynnissä olemattomuus, käytetään komentoa 'service.dead'.
+   - 'service.enabled' varmistaa demonin uudelleenkäytettävyyden, jos pitää tehdä uudelleenkäynnistys
+
 
 ## Tehtävät
 
-Kaikki tehtävänannot on löydetty kurssin tehtäväsivulta kohdasta h3-Demoni.
+Kaikki tehtävänannot on löydetty kurssin tehtäväsivulta kohdasta h3-Demoni eli tämän linkin takaa: https://terokarvinen.com/palvelinten-hallinta/#h3-demoni
 
-a) Ensimmäisessä tehtävässä oli ideana asentaa Apache, korvata sen testisivu ja testata demonin toimivuus. Aloitin tehtävänteon 17.11. klo 18.15 kirjautumalla sisään master-virtuaalikoneelle. Sinne päästyäni käytin seuraavia komentoja:
+### a) 
+
+Ensimmäisessä tehtävässä oli ideana asentaa Apache, korvata sen testisivu ja testata demonin toimivuus. Aloitin tehtävänteon 17.11. klo 18.15 kirjautumalla sisään master-virtuaalikoneelle. Sinne päästyäni käytin seuraavia komentoja:
 
     sudo apt update
     sudo apt install apache2 -y
@@ -46,7 +69,9 @@ a) Ensimmäisessä tehtävässä oli ideana asentaa Apache, korvata sen testisiv
 
 
 
-  b) Palasin takaisin tehtävien ääreen 18.11. klo 15.30. Tässä tehtävässä minun piti lisätä uusi portti, jota SSHd kuuntelee. Aloitin tehtävän tekemisen tuttuun tapaan avaamalla master-koneen. Siirryin hakemistoon /srv/salt ja syötin sinne kuvassa näkyvän komennot:
+### b) 
+
+Palasin takaisin tehtävien ääreen 18.11. klo 15.30. Tässä tehtävässä minun piti lisätä uusi portti, jota SSHd kuuntelee. Aloitin tehtävän tekemisen tuttuun tapaan avaamalla master-koneen. Siirryin hakemistoon /srv/salt ja syötin sinne kuvassa näkyvän komennot:
 
 ![image](https://github.com/user-attachments/assets/144161b3-2642-4342-940f-079b5b3243b3)
 
@@ -81,10 +106,14 @@ Tästä eteenpäin selviydyin itsenäisesti. Tehtävän viimeistelyä varten sy�
 Tehtävä tuli valmiiksi klo 16.06.
 
 
+### c)
+
+Ajattelin tehdä oman moduulini palomuurin konfigurointityökalusta. Ideana olisi yksinkertaistaa ja helpottaa ufw-palomuurin hallintaa. Voisin esimerkiksi lisätä suojausmallien testauksen ja lokien tarkastuksen.
 
 
+### d) 
 
-d) Pienen tauon jälkeen oli taas aika jatkaa tehtäviä! Olin jättänyt edellisen tehtävän jäljiltä master-koneen päälle, joten tällä kertaa ei tarvinnut tuhlata aikaa sisäänkirjautumiseen. Tosin tässä tehtävässä tällä ajansäästöllä ei ollut väliä, kun jouduin heti alkuun metsästämään ohjeita.
+Pienen tauon jälkeen oli taas aika jatkaa tehtäviä! Olin jättänyt edellisen tehtävän jäljiltä master-koneen päälle, joten tällä kertaa ei tarvinnut tuhlata aikaa sisäänkirjautumiseen. Tosin tässä tehtävässä tällä ajansäästöllä ei ollut väliä, kun jouduin heti alkuun metsästämään ohjeita.
 
 Löysin kaksi mielestäni hyvää ohjetta. Ensimmäiseksi tutkailin [DigitalOceanin](https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-debian-11) ohjetta ja poimin sieltä käyttööni sopivia komentoja. Kun äskeinen lähde oli koluttu läpi, siirryin [Reintechin](https://reintech.io/blog/configuring-apache-virtual-hosts-debian-12) sivustolle keräämään tietoja.
 
@@ -120,3 +149,20 @@ Kun komennot olivat saaneet tehdä työtänsä, yritin avata sivun http://pihlan
 ![image](https://github.com/user-attachments/assets/84e5c820-3d4e-4df0-b501-25a48003ccc0)
 
 ![image](https://github.com/user-attachments/assets/d8e26d29-442c-441c-baa8-1d7392bc6091)
+
+En saanut ratkottua, joten päädyin lopettamaan urakan 20.11. klo 11.23.
+
+
+
+## Lähteet
+
+DigitalOcean (2022). How To Install the Apache Web Server on Debian 11. Saatavilla: https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-debian-11.
+Karvinen, T. (2018). Pkg-File-Service – Control Daemons with Salt – Change SSH Server Port. Saatavilla: https://terokarvinen.com/2018/04/03/pkg-file-service-control-daemons-with-salt-change-ssh-server-port/?fromSearch=karvinen%20salt%20ssh.
+Karvinen, T. (2024). Tehtävänanto. Saatavilla: https://terokarvinen.com/palvelinten-hallinta/#h3-demoni.
+Reintech (2024). Configuring Apache Virtual Hosts on Debian 12. Saatavilla: https://reintech.io/blog/configuring-apache-virtual-hosts-debian-12.
+Saltin virallinen dokumentaatio. Tilafunktiot pkg, file ja service.
+Komennot:
+
+    sudo salt-call --local sys.state_doc pkg
+    sudo salt-call --local sys.state_doc file
+    sudo salt-call --local sys.state_doc service
