@@ -34,3 +34,4 @@ Koska aloin tekemään tehtävää illalla, en tulisi saamaan sitä yhden istunn
 
 Ykköspäiväni tuli päätökseen klo 21.08.
 
+Seuraavana päivänä, eli 27.11., huomasin ettei minulla ollutkaan aikaa tehdä tehtävää ennen klo 14. Palautin tehtävän sillä mielin, että jatkaan sitten kunhan vain kerkiän.
