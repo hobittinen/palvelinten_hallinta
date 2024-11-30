@@ -38,3 +38,18 @@ Nyt oli vuorossa ufw-palvelun hallintaa. Käytin seuraavia komentoja hallintaan.
     sudo ufw status numbered
 
 Tässä välissä päätin pitää tauon. Kello oli 15.46.
+
+Palasin tauoltani samana päivänä klo 18.25. Ensimmäinen asia, jonka tein taukoni jälkeen oli sääntöjen lisääminen. Aloitin sääntöjen lisäämisen "allow"-säännöistä.
+
+![image](https://github.com/user-attachments/assets/3654ffe3-5c93-419e-aaa8-e42edb1318b7)
+![image](https://github.com/user-attachments/assets/c2db500b-51c4-4ce7-9e5a-114bb47473dc)
+
+"Allow"-sääntöjen jälkeen vuorossa oli "deny"- ja "reject"-säännöt. Tein ne kuvassa näkyvillä tavoilla.
+
+![image](https://github.com/user-attachments/assets/ffb9a318-32d6-430d-94e7-550e890b9ac3)
+
+En ollut tyytyväinen sääntöihin, joten muokkailin niitä vähän. Lopputuloksena sain aikaiseksi tällaisen taulukon:
+
+![image](https://github.com/user-attachments/assets/c9ac4598-2baf-4bf3-ba9d-255979b91c0c)
+
+Luulin sääntöjen kanssa sekoilun olevan ohi, mutta ei se ollutkaan. Vilkaisin ohjesivua ja totesin, ettei tänään enää jaksaisi asennella sääntöjä. Päätin lopettaa tämän päivän työt klo 18.55.
