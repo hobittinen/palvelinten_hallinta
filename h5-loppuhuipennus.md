@@ -27,4 +27,14 @@ Sain uuden idean: reititetty liikenne! Toteutin sen, jonka jälkeen tarkistin as
 
 ![image](https://github.com/user-attachments/assets/c7a341c4-1bc1-48db-ab86-2e317d04fc22)
 
-Seuraava siirtoni oli suoraan https://www.cyberciti.biz/faq/set-up-a-firewall-with-ufw-on-debian-12-linux/
+Seuraava siirtoni oli suoraan [täältä](https://www.cyberciti.biz/faq/set-up-a-firewall-with-ufw-on-debian-12-linux/). Sallin kaiken liikenteen LXD-säilölle Debian Linux by lxdbr0 -käyttöliittymässä.
+
+![image](https://github.com/user-attachments/assets/0a7885cb-3e85-4f13-b8fa-06c396128c4f)
+
+Nyt oli vuorossa ufw-palvelun hallintaa. Käytin seuraavia komentoja hallintaan.
+
+    sudo ufw status
+    sudo ufw status verbose
+    sudo ufw status numbered
+
+Tässä välissä päätin pitää tauon. Kello oli 15.46.
