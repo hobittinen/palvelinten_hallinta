@@ -53,3 +53,29 @@ En ollut tyytyväinen sääntöihin, joten muokkailin niitä vähän. Lopputulok
 ![image](https://github.com/user-attachments/assets/c9ac4598-2baf-4bf3-ba9d-255979b91c0c)
 
 Luulin sääntöjen kanssa sekoilun olevan ohi, mutta ei se ollutkaan. Vilkaisin ohjesivua ja totesin, ettei tänään enää jaksaisi asennella sääntöjä. Päätin lopettaa tämän päivän työt klo 18.55.
+
+Sain kerättyä noin vuorokaudessa tarpeeksi voimia, jotta jaksoin jatkaa moduuliani. Avasin virtuaalikoneeni 1.12. klo 17.30. Heti alkuun tarkistin ufw-konfiguraation.
+
+![image](https://github.com/user-attachments/assets/2e88da3c-a5db-43fa-9186-7d3b16018079)
+
+Kaikki oli kunnossa, joten pääsin jatkamaan sääntöjen asentelua. Ensitöikseni asetin rajoituksia SSH:n liikenteelle allaolevalla komennolla.
+
+    sudo ufw limit ssh/tcp
+
+Seuraavaksi suuntasin sääntöjen järjestyksen hallintaan. Priorisoin sysadminin IP-osoitteen, hätäavasin tietyn portin, estin tietyn IP-osoitteen ennen yleisiä sääntöjä, sallin kaiken saapuvan liikenteen porttiin 180 ja asetin VPN-liikenteen etusijalle.
+
+![image](https://github.com/user-attachments/assets/ac577adf-bf66-4e00-88cf-0479cf74159a)
+
+Huomasin, etten ollut hätäpriorisoinut SSH-yhteyksiä! Onneksi ongelma ratkesi helposti seuraavalla komennolla:
+
+    sudo ufw insert 1 allow 22/tcp
+
+Tarkistin ufw-konfiguraation.
+
+    sudo ufw status numbered
+
+Ufw-konfiguraation ollessa paikkansapitävä, siirryin sääntöjen lisäämiseen palomuurin alkuun. Tein seuraavanlaisia sääntöjä:
+
+![image](https://github.com/user-attachments/assets/e9842e3f-17e6-4a3d-9715-a9016736a852)
+
+Nyt oli tauon aika! Siirryin tauolle klo 18.12.
