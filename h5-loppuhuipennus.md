@@ -120,3 +120,25 @@ Tarkistin sääntöjen yhteensopivuuden seuraavilla komennoilla:
     sudo iptables -t nat -L -v -n
 
 Seuraavaksi vuorossa oli tauko. Kello oli tässä kohtaa 12.44.
+
+Palasin tauoltani klo 15.14. Aloin heti viimeistelemään moduuliani. Päätin testata ufw:n ja iptablesin yhteiseloa.
+
+![image](https://github.com/user-attachments/assets/7c928f74-9e30-4fa5-b38b-a2a36afbb072)
+
+Seuraavaksi tarkastin ufw:n idempotenttiutta. Käytin siihen seuraavaa komentosarjaa:
+
+    sudo ufw status verbose
+    sudo ufw allow ssh
+    sudo ufw status verbose
+    sudo ufw allow ssh
+
+Totesin idempotenttiuden olevan läsnä, koska tulokset eivät muuttuneet, vaikka kuinka monta kertaa toistelin komentoja. Tämän jälkeen tarkistin iptables-säännöt.
+
+    sudo iptables -L -v -n
+
+Halusin vielä tarkistaa uudelleen ufw:n ja iptablesin yhteiselon onnistumisen.
+
+![image](https://github.com/user-attachments/assets/0e4da975-c97c-4dbc-acc5-e5bba032f24c)
+
+Totesin olevani nyt tyytyväinen moduuliini. Työni tuli päätökseen 2.12. klo 15.55.
+
