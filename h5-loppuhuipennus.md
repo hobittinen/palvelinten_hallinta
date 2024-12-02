@@ -79,3 +79,44 @@ Ufw-konfiguraation ollessa paikkansapitävä, siirryin sääntöjen lisäämisee
 ![image](https://github.com/user-attachments/assets/e9842e3f-17e6-4a3d-9715-a9016736a852)
 
 Nyt oli tauon aika! Siirryin tauolle klo 18.12.
+
+Taukoni vähän venähti. Pääsin takaisin koneen ääreen vasta 2.12. klo 11.45. Jatkoin kuuliaisesti moduulini tekemistä. Aloitin tämän päivän hommat palomuuriraporttien katsomisella. Katsoin raportteja seuraavilla komennoilla:
+
+    sudo ufw show raw | less
+    sudo ufw show builtins | more
+    sudo ufw show listening
+    sudo ufw show added
+
+Viimeinen ylläolevista komennoista tulosti seuraavanlaisen listan:
+
+![image](https://github.com/user-attachments/assets/522ea9b7-1db9-4592-aaf4-4e98c3337422)
+
+Raporttien tutkailun jälkeen varmistin ufw-lokien käytössäolon. Tein myös varmuuskopion ufw-asetuksista.
+
+![image](https://github.com/user-attachments/assets/6e1edfbc-5705-4b2f-a3b1-4f857ef0a092)
+
+Mielestäni olin nyt saanut ufw-asiat hyvään jamaan. En kuitenkaan ollut täysin tyytyväinen moduuliini. Voisinko tehdä jotain muuta? Hetken pohdinnan jälkeen päädyin siihen vaihtoehtoon, että lisään iptables-juttuja moduuliini. Hain sitä varten [ohjeen](https://upcloud.com/resources/tutorials/configure-iptables-debian).
+
+Aloitin retkeni iptablesin kanssa tarkastamalla iptablesin tilan ja version.
+
+    sudo iptables -L
+    sudo iptables --version
+
+Jatkoin tehtävää soveltamalla ohjeena käyttämäni verkkosivun komentoja. Tarvittaessa käytin apuna ChatGPT-ohjelmaa.
+
+Seuraavaksi vuorossa oli iptables-sääntöjen lisäämistä. Lisäsin reitityksen NAT-taulun avulla, muokkasin lähtevää liikennettä ja lisäsin kirjaussääntöjä.
+
+![image](https://github.com/user-attachments/assets/1ae85d89-5689-4efb-a42f-f758d8e14a75)
+
+Sääntöjen lisäilyn jälkeen oli aika tallentaa ne! Käytin seuraavia komentoja:
+
+    sudo apt install iptables-persistent
+    sudo netfilter-persistent save
+
+Tarkistin sääntöjen yhteensopivuuden seuraavilla komennoilla:
+
+    sudo ufw status verbose
+    sudo iptables -L -v -n
+    sudo iptables -t nat -L -v -n
+
+Seuraavaksi vuorossa oli tauko. Kello oli tässä kohtaa 12.44.
